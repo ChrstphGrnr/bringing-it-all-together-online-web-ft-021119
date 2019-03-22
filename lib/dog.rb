@@ -102,8 +102,8 @@ class Dog
       if dog.name == new_dog.name && dog.breed == new_dog.breed
         binding.pry
         dog
-
       else
+        binding.pry
         new_dog.save
       end
     end
