@@ -106,7 +106,7 @@ class Dog
         # binding.pry
         x = new_dog.save
       end
-      x.first
+    
     end
   end
 
