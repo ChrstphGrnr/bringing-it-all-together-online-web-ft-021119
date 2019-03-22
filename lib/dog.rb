@@ -99,6 +99,17 @@ class Dog
     dog
   end
 
+  def self.find_or_create_by(data)
+    sql = <<-SQL
+      SELECT * FROM dogs
+      WHERE name = ? AND breed = ?;
+    SQL
+    # binding.pry
+    dog = DB[:conn].execute(sql, data[:name], data[:breed])
+    # binding.pry
+    dog.empty? ? dog = Dog.create(data) : dog = Dog.new_from_db(dog[0])
+    dog
+  end
   # def self.find_or_create_by(data)
   #   new_dog = Dog.new(data)
   #   self.all.each do |dog|
