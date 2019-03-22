@@ -93,7 +93,7 @@ class Dog
       WHERE name = ? AND breed = ?;
     SQL
     dog = DB[:conn].execute(sql, data[:name], data[:breed])
-    dog.empty? ? Dog.create(data) : dog[0][0]
+    dog.empty? ? Dog.create(data) : dog[0]
   end
 
   # def self.find_or_create_by(data)
