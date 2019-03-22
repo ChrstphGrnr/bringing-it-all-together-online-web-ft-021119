@@ -104,25 +104,12 @@ class Dog
       SELECT * FROM dogs
       WHERE name = ? AND breed = ?;
     SQL
-    # binding.pry
+    
     dog = DB[:conn].execute(sql, data[:name], data[:breed])
-    # binding.pry
+
     dog.empty? ? dog = Dog.create(data) : dog = Dog.new_from_db(dog[0])
     dog
   end
-  # def self.find_or_create_by(data)
-  #   new_dog = Dog.new(data)
-  #   self.all.each do |dog|
-  #     if dog.name == new_dog.name && dog.breed == new_dog.breed
-  #       # binding.pry
-  #       x << dog
-  #     else
-  #       # binding.pry
-  #       x = new_dog.save
-  #     end
-  #
-  #   end
-  # end
 
 
 end
