@@ -98,7 +98,7 @@ class Dog
 
   def self.find_or_create_by(data)
     new_dog = Dog.new(data)
-    self.all.find do |dog|
+    self.all.select do |dog|
       if dog.name == new_dog.name && dog.breed == new_dog.breed
         # binding.pry
         dog
