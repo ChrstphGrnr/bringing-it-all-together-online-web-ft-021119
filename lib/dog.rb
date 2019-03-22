@@ -98,15 +98,15 @@ class Dog
 
   def self.find_or_create_by(data)
     new_dog = Dog.new(data)
-    self.all.select do |dog|
+    self.all.each do |dog|
       if dog.name == new_dog.name && dog.breed == new_dog.breed
         # binding.pry
-        x = dog
+        x << dog
       else
         # binding.pry
         x = new_dog.save
       end
-      x
+      x.first
     end
   end
 
