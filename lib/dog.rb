@@ -87,27 +87,28 @@ class Dog
     DB[:conn].execute(sql).collect {|dogs| Dog.new_from_db(dogs)}
   end
 
-  # def self.find_or_create_by(data)
-  #   sql = <<-SQL
-  #     SELECT * FROM dogs
-  #     WHERE name = ? AND breed = ?;
-  #   SQL
-  #   dog = DB[:conn].execute(sql, data[:name], data[:breed])
-  #   dog.empty? ? Dog.create(data) : Dog.new_from_db(dog)
-  # end
-
   def self.find_or_create_by(data)
-    new_dog = Dog.new(data)
-    self.all.each do |dog|
-      if dog.name == new_dog.name && dog.breed == new_dog.breed
-        # binding.pry
-        x << dog
-      else
-        # binding.pry
-        x = new_dog.save
-      end
-    
-    end
+    sql = <<-SQL
+      SELECT * FROM dogs
+      WHERE name = ? AND breed = ?;
+    SQL
+    binding.pry
+    dog = DB[:conn].execute(sql, data[:name], data[:breed])
+    dog.empty? ? Dog.creat (data) : Dog.new_from_db(dog)
+  end
+
+  # def self.find_or_create_by(data)
+  #   new_dog = Dog.new(data)
+  #   self.all.each do |dog|
+  #     if dog.name == new_dog.name && dog.breed == new_dog.breed
+  #       # binding.pry
+  #       x << dog
+  #     else
+  #       # binding.pry
+  #       x = new_dog.save
+  #     end
+  #
+  #   end
   end
 
 
