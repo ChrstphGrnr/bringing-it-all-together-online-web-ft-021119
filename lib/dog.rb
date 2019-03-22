@@ -100,7 +100,9 @@ class Dog
     new_dog = Dog.new(data)
     self.all.map do |dog|
       if dog.name == new_dog.name && dog.breed == new_dog.breed
+        binding.pry
         dog
+
       else
         new_dog.save
       end
