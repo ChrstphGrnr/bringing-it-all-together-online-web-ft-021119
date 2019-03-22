@@ -101,11 +101,12 @@ class Dog
     self.all.select do |dog|
       if dog.name == new_dog.name && dog.breed == new_dog.breed
         # binding.pry
-        dog
+        x = dog
       else
         # binding.pry
-        new_dog.save
+        x = new_dog.save
       end
+      x
     end
   end
 
