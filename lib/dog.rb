@@ -92,11 +92,8 @@ class Dog
       SELECT * FROM dogs
       WHERE name = ? AND breed = ?;
     SQL
-    # binding.pry
-
     dog = DB[:conn].execute(sql, data[:name], data[:breed])
     dog.empty? ? Dog.create(data) : dog[0][0]
-
   end
 
   # def self.find_or_create_by(data)
