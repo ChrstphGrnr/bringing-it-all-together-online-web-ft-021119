@@ -104,10 +104,8 @@ class Dog
       SELECT * FROM dogs
       WHERE name = ? AND breed = ?;
     SQL
-
     dog = DB[:conn].execute(sql, data[:name], data[:breed])
     dog.empty? ? Dog.create(data) : Dog.new_from_db(dog[0])
-  
   end
 
 
