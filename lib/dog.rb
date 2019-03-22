@@ -94,7 +94,7 @@ class Dog
     SQL
     binding.pry
     dog = DB[:conn].execute(sql, data[:name], data[:breed])
-    dog.empty? ? Dog.create (data) : Dog.new_from_db(dog)
+    dog.empty? ? Dog.create(data) : Dog.new_from_db(dog)
   end
 
   # def self.find_or_create_by(data)
